@@ -1,30 +1,48 @@
-
-.login-bg {
-	-fx-background-color:linear-gradient(to bottom, #141E30, #243B55);
-	-fx-opacity:5;
+.side-panel-bg {
+	-fx-background-color:linear-gradient(to bottom, #354e8f, #172857);
 }
 
-.loginfield-bg {
-	-fx-background-color:#273852;
-	-fx-background-radius:40px;
-	-fx-border-color:#293447;
-	-fx-border-width:2px;
-	-fx-border-radius:40px;
-}
-
-.textfield-bg {
+.side-button {
 	-fx-background-color:transparent;
-	-fx-border-color:#739feb;
-
-	-fx-border-width:0px 0px 3px 0px;
-	-fx-text-inner-color:#fff;
-}
-
-.button-bg {
-	-fx-background-color:#2c6eb5;
+	-fx-alignment:center-left;
+	-fx-padding:0px 0px 0px 70px;
 	-fx-cursor:hand;
 }
 
-.button-bg:hover {
-	-fx-background-color:#3f95f2;
+.side-button:hover {
+	-fx-background-color:#9cb8ff;
+	-fx-background-radius:40px 0px 0px 40px;
+	
+	
+}
+
+.side-bottom-label {
+	-fx-background-color:transparent;
+	-fx-border-width:0px 0px 0.5px 0px;
+	-fx-border-color:#8297a1;
+}
+
+.top-menu-bar {
+	-fx-text-inner-color:black;
+    -fx-padding:20px;
+    -fx-background-radius:40px 0px 0px 40px;
+    -fx-background-color:white;
+    -fx-border-width:2px 0px 2px 2px;
+    -fx-border-color:black;
+    -fx-border-radius:25px 0px 0px 25px;
+
+}
+
+.top-button {
+	-fx-background-color:white;
+	-fx-background-radius:0px 40px 40px 0px;
+	-fx-padding:5px;
+    -fx-border-width:2px 2px 2px 0px;
+    -fx-border-color:black;
+    -fx-border-radius:0px 25px 25px 0px;
+}
+
+
+.top-button:hover {
+	-fx-cursor:hand;
 }
