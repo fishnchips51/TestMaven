@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="1000.0" styleClass="login-bg" stylesheets="@../../../../target/classes/css/Login.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.LoginPageController">
+<HBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="1000.0" styleClass="login-bg" stylesheets="@../css/Login.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.LoginPageController">
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" styleClass="loginfield-bg">
          <children>
             <ImageView fitHeight="214.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../target/classes/images/peopleicon.png" />
+                  <Image url="@../images/peopleicon.png" />
                </image>
             </ImageView>
             <Label prefHeight="56.0" prefWidth="121.0" text="Sign in" textFill="#6eadf2">
@@ -57,7 +57,7 @@
             <HBox alignment="CENTER" prefHeight="43.0" prefWidth="596.0" spacing="10.0">
                <children>
                   <Label text="Don't have an account?" textFill="WHITE" />
-                  <Hyperlink fx:id="signupLink" text="Sign up for Remote Desktop" textFill="WHITE" underline="true" />
+                  <Hyperlink fx:id="signupLink" onAction="#signup" text="Sign up for Remote Desktop" textFill="WHITE" underline="true" />
                </children>
             </HBox>
             <HBox alignment="TOP_CENTER" prefHeight="35.0" prefWidth="500.0">

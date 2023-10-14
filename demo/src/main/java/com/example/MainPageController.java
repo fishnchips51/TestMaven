@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 public class MainPageController {
     
     private Database db;
+    private UserSingleton user;
 
     @FXML
     private TextField connInput;
@@ -41,18 +42,25 @@ public class MainPageController {
 
     public void initialize() {
         db = new Database();
+        user = UserSingleton.getInstance();
 		scrollPane.setFitToWidth(true);
 		scrollPane.setFitToHeight(true);
+
+    }
+
+    private void initializeClients() {
+        System.out.println(user.getUserId());
     }
 
     public void addClient() throws IOException {
-        Pane client = FXMLLoader.load(getClass().getResource("Client.fxml"));
+        System.out.println(user.getUserId());
+        Pane client = FXMLLoader.load(getClass().getResource("../../fxml/Client.fxml"));
         Label userId = (Label) client.getChildren().get(1);
         userId.setText("1");
 
         flowPane.getChildren().add(client);
     }
 
- 
+
 
 }

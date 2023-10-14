@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="977.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.SignupPageController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="181.0" prefWidth="600.0" spacing="10.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/computer.png" />
+               </image>
+            </ImageView>
+            <Label text="Remote Desktop">
+               <font>
+                  <Font name="Calibri Bold" size="35.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="1.0" prefWidth="600.0">
+         <children>
+            <Pane prefHeight="73.0" prefWidth="140.0" style="-fx-background-color: grey;" />
+            <Pane prefHeight="73.0" prefWidth="59.0" />
+            <Pane prefHeight="73.0" prefWidth="140.0" style="-fx-background-color: grey;" />
+         </children>
+      </HBox>
+      <Pane prefHeight="16.0" prefWidth="600.0" />
+      <HBox alignment="CENTER" prefHeight="17.0" prefWidth="600.0">
+         <children>
+            <Label text="Sign up with your email address">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Pane prefHeight="25.0" prefWidth="600.0" />
+      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="600.0">
+         <children>
+            <Label text="What should be call you?">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Pane prefHeight="26.0" prefWidth="300.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <TextField fx:id="username" prefHeight="50.0" prefWidth="444.0" promptText="Enter profile username">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <Pane prefHeight="25.0" prefWidth="600.0" />
+      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="600.0">
+         <children>
+            <Label text="Create a password">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Pane prefHeight="26.0" prefWidth="339.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <PasswordField fx:id="password" prefHeight="50.0" prefWidth="444.0" promptText="Create a password">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+         </children>
+      </HBox>
+      <Pane prefHeight="25.0" prefWidth="600.0" />
+      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="600.0">
+         <children>
+            <Label text="What's your email?">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Pane prefHeight="26.0" prefWidth="334.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <TextField fx:id="email" prefHeight="50.0" prefWidth="444.0" promptText="Enter your email.">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <Pane prefHeight="25.0" prefWidth="600.0" />
+      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="600.0">
+         <children>
+            <Label text="What's your date of birth?">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Pane prefHeight="26.0" prefWidth="294.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="70.0" prefWidth="600.0">
+         <children>
+            <VBox prefHeight="70.0" prefWidth="97.0">
+               <children>
+                  <Label text="Day" />
+                  <Pane prefHeight="10.0" prefWidth="200.0" />
+                  <TextField fx:id="day" prefHeight="45.0" prefWidth="112.0" />
+               </children>
+            </VBox>
+            <Pane prefHeight="70.0" prefWidth="35.0" />
+            <VBox prefHeight="70.0" prefWidth="176.0">
+               <children>
+                  <Label text="Month" />
+                  <Pane prefHeight="10.0" prefWidth="200.0" />
+                  <ComboBox fx:id="month" prefHeight="47.0" prefWidth="179.0" promptText="month" />
+               </children>
+            </VBox>
+            <Pane prefHeight="70.0" prefWidth="35.0" />
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Year" />
+                  <Pane prefHeight="10.0" prefWidth="200.0" />
+                  <TextField fx:id="year" prefHeight="50.0" prefWidth="100.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Pane prefHeight="30.0" prefWidth="600.0" />
+      <HBox alignment="CENTER" prefHeight="26.0" prefWidth="600.0">
+         <children>
+            <Label text="What's your gender?">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Pane prefHeight="26.0" prefWidth="325.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="29.0" prefWidth="600.0" spacing="35.0">
+         <children>
+            <RadioButton fx:id="male" mnemonicParsing="false" text="Male">
+               <toggleGroup>
+                  <ToggleGroup fx:id="gender" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="female" mnemonicParsing="false" text="Female">
+               <toggleGroup>
+                  <ToggleGroup fx:id="gender" />
+               </toggleGroup></RadioButton>
+            <RadioButton fx:id="nonBinary" mnemonicParsing="false" text="Non-Binary" toggleGroup="$gender" />
+            <RadioButton fx:id="other" mnemonicParsing="false" text="Other" toggleGroup="$gender" />
+            <Pane prefHeight="50.0" prefWidth="70.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="29.0" prefWidth="600.0">
+         <children>
+            <RadioButton fx:id="nothing" mnemonicParsing="false" text="Prefer not to say" toggleGroup="$gender" />
+            <Pane prefHeight="29.0" prefWidth="342.0" />
+         </children>
+      </HBox>
+      <Pane prefHeight="18.0" prefWidth="600.0" />
+      <HBox alignment="CENTER" prefHeight="25.0" prefWidth="600.0">
+         <children>
+            <CheckBox fx:id="news" mnemonicParsing="false" text="Please send me news and offers from Remote Desktop" />
+            <Pane prefHeight="40.0" prefWidth="141.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="25.0" prefWidth="600.0">
+         <children>
+            <CheckBox fx:id="terms" mnemonicParsing="false" text="By clicking this box, you agree to Remote Desktop's terms and conditions." />
+            <Pane prefHeight="25.0" prefWidth="39.0" />
+         </children>
+      </HBox>
+      <Pane prefHeight="18.0" prefWidth="600.0" />
+      <HBox alignment="CENTER" prefHeight="69.0" prefWidth="600.0">
+         <children>
+            <Button fx:id="signup" mnemonicParsing="false" prefHeight="51.0" prefWidth="133.0" text="Sign Up" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
