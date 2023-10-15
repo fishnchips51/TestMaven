@@ -1,7 +1,9 @@
-package com.example;
+package com.example.Controllers;
 
 import java.io.IOException;
-import java.sql.SQLException;
+
+import com.example.Database;
+import com.example.UserSingleton;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,8 +47,10 @@ public class LoginPageController {
         if (inputUsername.equals(db.getUsername(inputUsername)) && inputPassword.equals(db.getPassword(inputPassword))) {
             try {
                 user.setUserId(db.getUserId(inputUsername, inputPassword));
+                user.setUsername(inputUsername);
+                user.setEmail(inputPassword);
 
-                Parent root = FXMLLoader.load(getClass().getResource("../../fxml/Main.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("../../../fxml/Main.fxml"));
                 Scene scene = new Scene(root);
                 Stage window = (Stage) loginButton.getScene().getWindow();
 
@@ -62,7 +66,7 @@ public class LoginPageController {
     }
 
     public void signup(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/Signup.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../../fxml/Signup.fxml"));
         Scene scene = new Scene(root);
         Stage window = (Stage) loginButton.getScene().getWindow();
 

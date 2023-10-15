@@ -1,10 +1,11 @@
-package com.example;
+package com.example.Controllers;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
-import java.sql.Statement;
+
+import com.example.Database;
+import com.example.UserSingleton;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -89,7 +90,10 @@ public class SignupPageController {
         try {
             db.insertUser(inputUsername, inputPassword, inputEmail, inputBirthDate, inputGender);
             user.setUserId(db.getUserId(inputUsername, inputPassword));
-            Parent root = FXMLLoader.load(getClass().getResource("../../fxml/Main.fxml"));
+			user.setUsername(inputUsername);
+			user.setEmail(inputEmail);
+
+            Parent root = FXMLLoader.load(getClass().getResource("../../../fxml/Main.fxml"));
             Scene scene = new Scene(root);
             Stage window = (Stage) signup.getScene().getWindow();
             window.setScene(scene);
