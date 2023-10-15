@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 import com.example.Database;
-import com.example.UserSingleton;
+import com.example.Singletons.UserSingleton;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

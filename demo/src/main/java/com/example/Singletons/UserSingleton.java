@@ -1,10 +1,11 @@
-package com.example;
+package com.example.Singletons;
 
 public class UserSingleton {
     private static UserSingleton instance = new UserSingleton();
     private int userId;
     private String username;
     private String email;
+    private String ip;
 
     private UserSingleton() {}
 
@@ -34,5 +35,13 @@ public class UserSingleton {
 
     public String getEmail() {
         return email;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public String getIp() {
+        return ip;
     }
 }

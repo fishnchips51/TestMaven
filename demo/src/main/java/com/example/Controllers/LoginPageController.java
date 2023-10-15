@@ -1,9 +1,12 @@
 package com.example.Controllers;
 
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.sql.SQLException;
 
 import com.example.Database;
-import com.example.UserSingleton;
+import com.example.Singletons.UserSingleton;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +23,8 @@ import javafx.stage.Stage;
 public class LoginPageController {
     private Database db;
     private UserSingleton user = UserSingleton.getInstance();
+    private InetAddress inetAddress;
+    private String ip;
 
 	@FXML
 	private TextField username;
@@ -38,6 +43,12 @@ public class LoginPageController {
 
     public void initialize() {
         db = new Database();
+        try {
+            inetAddress = InetAddress.getLocalHost();
+            ip = inetAddress.getHostAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
     }
 
     public void submit(ActionEvent event) {
@@ -49,6 +60,8 @@ public class LoginPageController {
                 user.setUserId(db.getUserId(inputUsername, inputPassword));
                 user.setUsername(inputUsername);
                 user.setEmail(inputPassword);
+                user.setIp(ip);
+                db.updateIp(ip);
 
                 Parent root = FXMLLoader.load(getClass().getResource("../../../fxml/Main.fxml"));
                 Scene scene = new Scene(root);
@@ -57,7 +70,7 @@ public class LoginPageController {
                 window.setScene(scene);
                 window.setMaximized(true);
 
-            } catch (IOException e) {
+            } catch (IOException | SQLException e) {
                 e.printStackTrace();
             }
         } else {

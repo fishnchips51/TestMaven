@@ -1,13 +1,11 @@
 package com.example.Controllers;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.example.Client;
 import com.example.Database;
-import com.example.UserSingleton;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +19,6 @@ import javafx.scene.layout.Pane;
 public class MainPageController {
     
     private Database db;
-    private UserSingleton user;
 
     @FXML
     private TextField connInput;
@@ -49,7 +46,6 @@ public class MainPageController {
 
     public void initialize() {
         db = new Database();
-        user = UserSingleton.getInstance();
 		scrollPane.setFitToWidth(true);
 		scrollPane.setFitToHeight(true);
         initializeClients();
@@ -60,6 +56,7 @@ public class MainPageController {
             ArrayList<Client> clients = db.getClients();
             for (int i = 0; i < clients.size(); i++) {
                 addClient(clients.get(i));
+
             }
         } catch (SQLException | IOException e) {
             e.printStackTrace();
@@ -69,8 +66,11 @@ public class MainPageController {
     private void addClient(Client user) throws IOException {
         Pane client = FXMLLoader.load(getClass().getResource("../../../fxml/Client.fxml"));
         Label userId = (Label) client.getChildren().get(1);
+        Label ip = (Label) client.getChildren().get(5);
+
         if (db.getUsername(user.getUsername()) != null) {
             userId.setText(user.getUsername());
+            ip.setText(user.getIp());
             flowPane.getChildren().add(client);
         } 
     }
