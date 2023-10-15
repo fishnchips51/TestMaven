@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="350.0" style="-fx-background-color: pink;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controllers.ClientPageController">
+   <children>
+      <Label layoutX="20.0" layoutY="14.0" prefHeight="102.0" prefWidth="198.0" text="Connection:">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="218.0" layoutY="14.0" prefHeight="102.0" prefWidth="129.0" text="?">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="30.0" layoutY="137.0" mnemonicParsing="false" onAction="#connectClient" prefHeight="34.0" prefWidth="69.0" text="Client" />
+      <Button layoutX="248.0" layoutY="137.0" mnemonicParsing="false" onAction="#connectServer" prefHeight="34.0" prefWidth="69.0" text="Server" />
+      <Label layoutX="23.0" layoutY="87.0" text="ip:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="87.0" prefHeight="27.0" prefWidth="168.0" text="?">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>
