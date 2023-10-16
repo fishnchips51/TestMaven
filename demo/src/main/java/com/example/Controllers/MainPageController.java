@@ -6,15 +6,19 @@ import java.util.ArrayList;
 
 import com.example.Client;
 import com.example.Database;
+import com.example.Server;
+import com.example.Singletons.UserSingleton;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class MainPageController {
     
@@ -49,6 +53,15 @@ public class MainPageController {
 		scrollPane.setFitToWidth(true);
 		scrollPane.setFitToHeight(true);
         initializeClients();
+
+        Runnable r = new Runnable() {
+            public void run() {
+                Server server = new Server();
+                server.startLocalServer();
+            }
+        };
+
+        new Thread(r).start();
     }
 
     private void initializeClients() {
@@ -63,14 +76,19 @@ public class MainPageController {
         }
     }
 
-    private void addClient(Client user) throws IOException {
-        Pane client = FXMLLoader.load(getClass().getResource("../../../fxml/Client.fxml"));
-        Label userId = (Label) client.getChildren().get(1);
-        Label ip = (Label) client.getChildren().get(5);
+    private void addClient(Client clientUser) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../../../fxml/Client.fxml"));
+        loader.load();
 
-        if (db.getUsername(user.getUsername()) != null) {
-            userId.setText(user.getUsername());
-            ip.setText(user.getIp());
+        ClientPageController clientController = loader.getController();
+        clientController.setClient(clientUser);
+
+        Pane client = loader.getRoot();
+        Label userId = (Label) client.getChildren().get(1);
+
+        if (db.getUsername(clientUser.getUsername()) != null) {
+            userId.setText(clientUser.getUsername());
             flowPane.getChildren().add(client);
         } 
     }
@@ -88,4 +106,8 @@ public class MainPageController {
         }
     }
 
+    public Stage getStage() {
+        Stage stage = (Stage) connInput.getScene().getWindow();
+        return stage;
+    }
 }
