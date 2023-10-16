@@ -54,7 +54,7 @@ public class Database {
 
     public String getPassword(String password) {
         String correctPassword = null;
-
+        
         try {
             ResultSet result = stmt.executeQuery(
                 "SELECT password " + 
@@ -127,12 +127,24 @@ public class Database {
         prstmt.executeUpdate();
     }
 
-    public int getIp(int userId) throws SQLException {
+    public String getIp(int userId) throws SQLException {
         ResultSet result = stmt.executeQuery(
             "SELECT ipaddress " +
             "FROM users " +
             "WHERE userid = "  + userId);
         result.next();
+        return result.getString(1);
+    }
+
+
+
+    public int getPort(int userId) throws SQLException {
+        ResultSet result = stmt.executeQuery(
+            "SELECT port " +
+            "FROM users " +
+            "WHERE userid = " + userId);
+        result.next();
         return result.getInt(1);
     }
+
 }
