@@ -93,7 +93,7 @@ public class SignupPageController {
 			user.setUsername(inputUsername);
 			user.setEmail(inputEmail);
 
-            Parent root = FXMLLoader.load(getClass().getResource("../../../fxml/Main.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
             Scene scene = new Scene(root);
             Stage window = (Stage) signup.getScene().getWindow();
             window.setScene(scene);

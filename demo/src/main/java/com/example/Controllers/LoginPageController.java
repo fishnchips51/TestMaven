@@ -64,7 +64,7 @@ public class LoginPageController {
                 db.updateIp(ip);
 
                 FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("../../../fxml/Main.fxml"));
+                loader.setLocation(getClass().getResource("/fxml/Main.fxml"));
                 loader.load();
                 user.setLoader(loader);
                 Scene scene = new Scene((Parent) loader.getRoot());
@@ -83,7 +83,7 @@ public class LoginPageController {
     }
 
     public void signup(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../../fxml/Signup.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/Signup.fxml"));
         Scene scene = new Scene(root);
         Stage window = (Stage) loginButton.getScene().getWindow();
 

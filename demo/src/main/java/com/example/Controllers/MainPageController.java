@@ -78,7 +78,7 @@ public class MainPageController {
 
     private void addClient(Client clientUser) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../../../fxml/Client.fxml"));
+        loader.setLocation(getClass().getResource("/fxml/Client.fxml"));
         loader.load();
 
         ClientPageController clientController = loader.getController();
