@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
-import java.util.Scanner;
+import java.sql.SQLException;
 
 public class Client {
     private int clientId;
@@ -18,6 +18,7 @@ public class Client {
     private OutputStreamWriter outputStreamWriter;
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
+    private Database db;
 
     public Client(int userId, String username, String email, String ip) {
         this.clientId = userId;
@@ -47,34 +48,37 @@ public class Client {
         return ip;
     }
 
-    public void connectClient() {
+    public void requestClient(int serverId) {
+        System.out.println("Is this working");
         try {
-            socket = new Socket("192.168.1.101", 1234);
+            db = new Database();
+            
+
+            socket = new Socket(ip, db.getPort(clientId));
+
 
             inputStreamReader = new InputStreamReader(socket.getInputStream());
             outputStreamWriter = new OutputStreamWriter(socket.getOutputStream());
-
             bufferedReader = new BufferedReader(inputStreamReader);
             bufferedWriter = new BufferedWriter(outputStreamWriter);
 
-            Scanner scanner = new Scanner(System.in);
-            while (true) {
-                String msg = scanner.nextLine();
-                bufferedWriter.write(msg);
-                bufferedWriter.newLine();
-                bufferedWriter.flush();
 
-                if (msg.equalsIgnoreCase("close")) {
-                    break;
-                }
-            }
+            bufferedWriter.write("Request Connection");
+            bufferedWriter.newLine();
+
+            bufferedWriter.write(Integer.toString(serverId));
+            bufferedWriter.newLine();
+            bufferedWriter.flush();
+
+
             socket.close();
             inputStreamReader.close();
             outputStreamWriter.close();
             bufferedReader.close();
             bufferedWriter.close();
-            scanner.close();
-        } catch (IOException e) {
+
+
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }

@@ -63,14 +63,18 @@ public class LoginPageController {
                 user.setIp(ip);
                 db.updateIp(ip);
 
-                Parent root = FXMLLoader.load(getClass().getResource("../../../fxml/Main.fxml"));
-                Scene scene = new Scene(root);
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../../../fxml/Main.fxml"));
+                loader.load();
+                user.setLoader(loader);
+                Scene scene = new Scene((Parent) loader.getRoot());
                 Stage window = (Stage) loginButton.getScene().getWindow();
+
 
                 window.setScene(scene);
                 window.setMaximized(true);
 
-            } catch (IOException | SQLException e) {
+            } catch (SQLException | IOException e) {
                 e.printStackTrace();
             }
         } else {

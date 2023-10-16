@@ -1,11 +1,16 @@
 package com.example.Singletons;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+
 public class UserSingleton {
     private static UserSingleton instance = new UserSingleton();
     private int userId;
     private String username;
     private String email;
     private String ip;
+    private FXMLLoader loader;
 
     private UserSingleton() {}
 
@@ -43,5 +48,13 @@ public class UserSingleton {
 
     public String getIp() {
         return ip;
+    }
+
+    public void setLoader(FXMLLoader loader) {
+        this.loader = loader;
+    }
+
+    public FXMLLoader getLoader() {
+        return loader;
     }
 }

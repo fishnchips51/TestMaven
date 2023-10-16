@@ -1,30 +1,39 @@
 package com.example.Controllers;
 
+import java.sql.SQLException;
+
 import com.example.Client;
+import com.example.Database;
 import com.example.Server;
+import com.example.Singletons.UserSingleton;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 
 public class ClientPageController {
 
-    public void connectClient(ActionEvent event) {
-        Runnable r  = new Runnable() {
-            public void run() {
-                Client client = new Client("john");
-                client.connectClient();
-            }
-        };
-        new Thread(r).start();
-    }
-    
-    public void connectServer(ActionEvent event) {
-        Runnable r = new Runnable() {
-            public void run() {
-                Server server = new Server();
-                server.connectToClient();
-            }
-        };
+    private Client client;
+    private Database db;
+    private UserSingleton user;
 
-        new Thread(r).start();
+    public void setClient(Client client) {
+        this.client = client;
     }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void requestConnection(ActionEvent event) {
+        user = UserSingleton.getInstance();
+
+        // Code for pop up
+
+        client.requestClient(user.getUserId());
+
+    }
+
+
+
+
 }
