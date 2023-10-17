@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox prefHeight="1002.0" prefWidth="1307.0" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainPageController">
+<HBox prefHeight="1002.0" prefWidth="1307.0" stylesheets="@../css/Main.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Controllers.MainPageController">
    <children>
       <AnchorPane prefHeight="873.0" prefWidth="250.0" styleClass="side-panel-bg">
          <children>
@@ -75,6 +75,7 @@
                   <Image url="@../images/computer.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="screen" fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
       <AnchorPane HBox.hgrow="SOMETIMES">
@@ -88,7 +89,7 @@
                               <Font name="Corbel Bold" size="20.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="connButton" layoutX="603.0" layoutY="41.0" mnemonicParsing="false" onAction="#addClient" prefHeight="69.0" prefWidth="105.0" styleClass="top-button" AnchorPane.rightAnchor="37.0">
+                        <Button fx:id="connButton" layoutX="603.0" layoutY="41.0" mnemonicParsing="false" onAction="#submitClient" prefHeight="69.0" prefWidth="105.0" styleClass="top-button" AnchorPane.rightAnchor="37.0">
                            <font>
                               <Font name="Corbel" size="20.0" />
                            </font>
