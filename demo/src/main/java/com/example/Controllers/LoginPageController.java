@@ -88,5 +88,6 @@ public class LoginPageController {
         Stage window = (Stage) loginButton.getScene().getWindow();
 
         window.setScene(scene);
+        
     } 
 }

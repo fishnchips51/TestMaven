@@ -12,10 +12,13 @@ import com.example.Singletons.UserSingleton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -23,6 +26,7 @@ import javafx.stage.Stage;
 public class MainPageController {
     
     private Database db;
+    private UserSingleton user;
 
     @FXML
     private TextField connInput;
@@ -48,8 +52,12 @@ public class MainPageController {
     @FXML
     private FlowPane flowPane;
 
+    @FXML
+    private ImageView screen;
+
     public void initialize() {
         db = new Database();
+        user = UserSingleton.getInstance();
 		scrollPane.setFitToWidth(true);
 		scrollPane.setFitToHeight(true);
         initializeClients();
@@ -109,5 +117,23 @@ public class MainPageController {
     public Stage getStage() {
         Stage stage = (Stage) connInput.getScene().getWindow();
         return stage;
+    }
+
+    public void test(Image image) {
+        screen.setImage(image);
+    }
+    
+    public ConnectionPageController connection() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/fxml/Connection.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) connInput.getScene().getWindow();
+        Scene scene = connInput.getScene();
+
+        scene.setRoot(root);
+        stage.setScene(scene);
+        stage.show();
+
+        return loader.getController();
     }
 }

@@ -14,9 +14,7 @@ public class Client {
     private String email;
     private String ip;
     private Socket socket;
-    private InputStreamReader inputStreamReader;
     private OutputStreamWriter outputStreamWriter;
-    private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
     private Database db;
 
@@ -49,32 +47,25 @@ public class Client {
     }
 
     public void requestClient(int serverId) {
-        System.out.println("Is this working");
+        System.out.println(username + ": Requesting Connection ");
         try {
             db = new Database();
             
 
             socket = new Socket(ip, db.getPort(clientId));
-
-
-            inputStreamReader = new InputStreamReader(socket.getInputStream());
             outputStreamWriter = new OutputStreamWriter(socket.getOutputStream());
-            bufferedReader = new BufferedReader(inputStreamReader);
             bufferedWriter = new BufferedWriter(outputStreamWriter);
 
 
             bufferedWriter.write("Request Connection");
             bufferedWriter.newLine();
-
             bufferedWriter.write(Integer.toString(serverId));
             bufferedWriter.newLine();
             bufferedWriter.flush();
 
 
             socket.close();
-            inputStreamReader.close();
             outputStreamWriter.close();
-            bufferedReader.close();
             bufferedWriter.close();
 
 
