@@ -9,6 +9,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.ByteBuffer;
@@ -53,6 +56,8 @@ public class Server {
     private ServerSocket serverSocket;
     private UserSingleton user;
     private ConnectionPageController connection;
+    private DatagramPacket datagramPacket;
+    private DatagramSocket datagramSocket;
     public Database db;
     
 
@@ -66,7 +71,7 @@ public class Server {
         try {
             serverSocket = new ServerSocket(db.getPort(user.getUserId()));
             System.out.println(user.getUsername() +": Server Established");
-
+            datagramSocket = new DatagramSocket();
             // Accept requests from clients
             while (true) {
                 Socket socket = serverSocket.accept();
@@ -87,15 +92,7 @@ public class Server {
                 }
 
                 // Server 
-                if (command.equals("Establish Connection")) {
-                    System.out.println(user.getUsername() + ": Reading image");
-                    for (int i = 0; i < 10; i++) {
-                        Image screen = receiveData(socket);
-                        processData(screen);
-                    }
 
-                    
-                }
             }
         } catch (IOException | SQLException e) {
             e.printStackTrace();
@@ -113,8 +110,9 @@ public class Server {
             bufferedWriter.write("Establish Connection");
             bufferedWriter.newLine();
             bufferedWriter.flush();
-            
-            sendData(socket);
+            outputStreamWriter.close();
+            bufferedWriter.close();
+            sendData(serverId);
 
 
         } catch (IOException | SQLException | AWTException e) {
@@ -124,10 +122,9 @@ public class Server {
     }
 
     // Client
-    public void sendData(Socket socket) throws AWTException, IOException {
+    public void sendData(int serverId) throws AWTException, IOException, SQLException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        outputStream = socket.getOutputStream();
-
+        InetAddress inetAddress = InetAddress.getByName(db.getIp(serverId));
 
 		Robot r = new Robot();
         Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
@@ -136,13 +133,8 @@ public class Server {
             System.out.println(user.getUsername() +": processing");
             try {
                 ImageIO.write(screen, "jpg", byteArrayOutputStream);
-                byte[] size = ByteBuffer.allocate(4).putInt(byteArrayOutputStream.size()).array();
-                System.out.println("Actual Size: " + byteArrayOutputStream.size());
-
-                outputStream.write(size);
-                outputStream.write(byteArrayOutputStream.toByteArray());
-                outputStream.flush();
-
+                datagramPacket = new DatagramPacket(byteArrayOutputStream.toByteArray(), byteArrayOutputStream.size(), inetAddress, 1234);
+                datagramSocket.send(datagramPacket);
 
             } catch (IOException e) {
                 e.printStackTrace();
